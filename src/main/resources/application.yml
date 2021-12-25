@@ -1,0 +1,20 @@
+server:
+  port: 8095
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: users-status
+        uri: http://localhost:8065/users/status/check
+        predicates:
+          - Path=/users/status/check
+          - Method=GET
+        filters:
+          - RemoveRequestHeader=Cookie
+      - id: albums
+        uri: http://localhost:8023/albums
+        predicates:
+          - Path=/albums
+          - Method=GET
+        filters:
+          - RemoveRequestHeader=Cookie
