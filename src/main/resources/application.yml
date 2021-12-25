@@ -15,6 +15,12 @@ spring:
         uri: http://localhost:8023/albums
         predicates:
           - Path=/albums
-          - Method=GET
+          - Method=GET\
         filters:
           - RemoveRequestHeader=Cookie
+  application:
+    name: gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8010/eureka
